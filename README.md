@@ -1,4 +1,6 @@
 # cross-email-validator
+UPDATE: 3/2020 This is only being used in BeeWell's older mobile app, once that is replace by `GetMyCarePlan` this can be removed.
+
 Goes beyond validating the characters that make up the email, and additionally performs DNS and mailbox checks to ensure that the email address is valid. Does all the network calls using [`cross-fetch`](https://github.com/lquixada/cross-fetch), so it works in the browser, on React Native, on Node, and anywhere else you want to run it.
 
 # Synposis
