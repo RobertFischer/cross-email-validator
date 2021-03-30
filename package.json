@@ -16,7 +16,7 @@
     "lodash": "^4.17.10",
     "nodemailer": "^6.0.0",
     "tlds": "stephenmathieson/node-tlds#master",
-    "urijs": "^1.19.1",
+    "urijs": "^1.19.6",
     "validator": "^10.4.0"
   },
   "devDependencies": {
