@@ -92,14 +92,19 @@ module.exports = (addr) => {
       () => doFetch(
         getDnsOverHttpUri(domainName),
         {headers: {accept: "application/dns-json"}}
-      ).tap((result) => {
-        if(result.Status !== 0) {
+      ).then((result) => {
+        if(!('Status' in result)) {
+          throw new Error('No Status code in DNS query');
+        }
+        if(result.Status === 3 ||  // 3 == NXDomain, i.e non-existant domain
+            ('Authority' in result && !('Answer' in result))  // Domain exists, but no MX records found
+          ) {
+            return false;  // Email can not be valid in the above situations
+        }
+        else if(result.Status !== 0) {
           throw new Error(`Bad status code from DNS query: ${result.Status}`);
         }
-      }).then(
-        (it) => it.Answer
-      ).then((answer) => {
-        answer = castArray(answer);
+        const answer = castArray(result.Answer);
         const emptyAnswer = isEmpty(answer);
         if(!isNode || emptyAnswer) return !emptyAnswer;
         const SMTPConnection = require("nodemailer/lib/smtp-connection");
