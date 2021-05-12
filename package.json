@@ -14,7 +14,7 @@
     "cross-fetch": "^2.2.2",
     "detect-is-node": "^1.0.3",
     "lodash": "^4.17.10",
-    "nodemailer": "^6.0.0",
+    "nodemailer": "^6.4.16",
     "tlds": "stephenmathieson/node-tlds#master",
     "urijs": "^1.19.6",
     "validator": "^10.4.0"
